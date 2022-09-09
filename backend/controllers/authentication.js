@@ -13,11 +13,9 @@ router.post("/", async (req, res) => {
     !user ||
     !(await bcrypt.compare(req.body.password, user.passwordDigest))
   ) {
-    res
-      .status(404)
-      .json({
-        message: `Could not find a user with the provided username and password`,
-      });
+    res.status(404).json({
+      message: `Could not find a user with the provided username and password`,
+    });
   } else {
     res.json({ user });
   }
