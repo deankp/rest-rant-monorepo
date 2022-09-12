@@ -18,6 +18,7 @@ function LoginForm() {
     e.preventDefault();
     const response = await fetch(`http://localhost:3001/authentication/`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -28,7 +29,7 @@ function LoginForm() {
 
     if (response.status === 200) {
       setCurrentUser(data.user);
-      history.push(`/`);
+      history.push("/");
     } else {
       setErrorMessage(data.message);
     }
